@@ -255,3 +255,23 @@ For issues or questions, check:
 ---
 
 **Made with ❤️ for the Smart Helper Hackathon**
+
+## Setup and Deployment Instructions
+
+ - **Step 2:** Configure the frontend by copying `frontend/firebase-config.example.js` to `frontend/firebase-config.js` and filling in credentials from Firebase Console (Project Settings → Your Apps → Web). Do NOT commit `frontend/firebase-config.js` — it's listed in `.gitignore`.
+
+## Deploying Cloud Functions (notes)
+
+Cloud Functions require Google Cloud APIs that need billing (Blaze) enabled on your project. To deploy functions:
+
+1. Enable Blaze billing at https://console.firebase.google.com/project/smart-helper-system/usage/details
+2. Create a CI secret `FIREBASE_TOKEN` by running locally `firebase login:ci` and copying the token to GitHub Actions secrets.
+3. Once billing is enabled and `FIREBASE_TOKEN` is set, the provided GitHub Actions workflow (`.github/workflows/deploy.yml`) will deploy hosting and functions on push to `master`.
+
+If you prefer local testing, use:
+
+```bash
+firebase emulators:start
+```
+
+And use `frontend/firebase-config.js` with the emulator config or the example file.

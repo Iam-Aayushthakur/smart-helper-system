@@ -45,3 +45,4 @@ yarn-error.log*
 # Secrets and configs (don't commit)
 secrets.json
 .credentials
+frontend/firebase-config.js
