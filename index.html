@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Helper Auto-Assignment System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Smart Helper Booking</h1>
+            <p class="subtitle">Get help in minutes, not hours</p>
+        </header>
+
+        <main>
+            <!-- Booking Form Section -->
+            <section class="booking-section">
+                <h2>Book a Helper</h2>
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <label for="serviceType">Select Service:</label>
+                        <select id="serviceType" required>
+                            <option value="">-- Choose a service --</option>
+                            <option value="cleaning">Cleaning</option>
+                            <option value="cooking">Cooking</option>
+                            <option value="repair">Repair</option>
+                            <option value="gardening">Gardening</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Service Description:</label>
+                        <textarea id="description" placeholder="Describe what help you need..." rows="3"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userLocation">Your Location:</label>
+                        <input type="text" id="userLocation" placeholder="Getting your location..." readonly>
+                        <button type="button" id="getLocationBtn" class="btn-secondary">Get Current Location</button>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Book Now</button>
+                </form>
+            </section>
+
+            <!-- Status Section -->
+            <section class="status-section" id="statusSection" style="display: none;">
+                <h2>Booking Status</h2>
+                <div id="statusContent" class="status-box"></div>
+                <button id="newBookingBtn" class="btn-secondary">New Booking</button>
+            </section>
+
+            <!-- Loading Indicator -->
+            <div id="loadingIndicator" class="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>Finding the best helper for you...</p>
+            </div>
+
+            <!-- Error Messages -->
+            <div id="errorMessage" class="error-message" style="display: none;"></div>
+
+            <!-- Helper Simulator (for testing) -->
+            <section class="helper-simulator">
+                <h3>Helper Simulator</h3>
+                <p class="hint">⚡ For testing: Manually add helpers in Firebase Firestore</p>
+                <div id="helperList" class="helper-list"></div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Smart Helper System. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-functions.js"></script>
+
+    <!-- App Script -->
+    <script src="firebase-config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
