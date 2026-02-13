@@ -1,39 +1,25 @@
 /**
  * Firebase Configuration File
- * 
- * TODO: Replace with your Firebase project credentials
- * Get these from: https://console.firebase.google.com/
- * 
- * Steps:
- * 1. Create a new Firebase project
- * 2. Go to Project Settings > Your Apps > Web
- * 3. Copy the config object below and replace with your credentials
+ *
+ * SECURITY: Do NOT commit real credentials to the repository.
+ * Copy `firebase-config.example.js` to `firebase-config.js` and fill
+ * the values from your Firebase Console (Project Settings > Your Apps > Web).
  */
 
 const firebaseConfig = {
-  apiKey: "REMOVED_FROM_HISTORY",
-  authDomain: "smart-helper-system.firebaseapp.com",
-  projectId: "smart-helper-system",
-  storageBucket: "smart-helper-system.firebasestorage.app",
-  messagingSenderId: "968723173025",
-  appId: "1:968723173025:web:c746d747309ab4d5b6ae0"
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_PROJECT.appspot.com",
+  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+  appId: "YOUR_APP_ID"
 };
 
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-
-// Get references to Firestore and Functions
-const db = firebase.firestore();
-const functions = firebase.functions();
-
-// Optional: Use Firebase Emulator for local development
-// Uncomment the lines below and ensure emulators are running
-/*
-if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
-    db.useEmulator('localhost', 8080);
-    functions.useEmulator('localhost', 5001);
-    console.log('Using Firebase Emulators');
+if (firebaseConfig.apiKey && firebaseConfig.apiKey.startsWith('YOUR_')) {
+  console.warn('Firebase config not set. Copy frontend/firebase-config.example.js to frontend/firebase-config.js and fill your project values.');
+} else {
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+  const functions = firebase.functions();
+  console.log('Firebase initialized successfully!');
 }
-*/
-
-console.log('Firebase initialized successfully!');
