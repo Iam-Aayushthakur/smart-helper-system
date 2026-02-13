@@ -1,0 +1,57 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Allow all reads/writes (DEVELOPMENT ONLY)
+    // Replace with proper rules before production
+    match /{document=**} {
+      allow read, write: if true;
+    }
+
+    // Production Rules (uncomment when ready)
+    /*
+    
+    // Users can read/write their own documents
+    match /users/{userId} {
+      allow read, write: if request.auth.uid == userId;
+    }
+
+    // Helpers can read/write their own documents
+    match /helpers/{helperId} {
+      allow read, write: if request.auth.uid == helperId;
+      allow read: if true; // Public can view available helpers
+    }
+
+    // Bookings - complex rules
+    match /bookings/{bookingId} {
+      // User can read their own bookings
+      allow read: if request.auth.uid == resource.data.userId;
+      
+      // Helper can read assigned bookings
+      allow read: if request.auth.uid == resource.data.assignedHelperId;
+      
+      // User can create bookings
+      allow create: if request.auth.uid != null 
+                      && request.resource.data.userId == request.auth.uid;
+      
+      // Helpers can update their assigned bookings
+      allow update: if request.auth.uid == resource.data.assignedHelperId;
+    }
+
+    // Ratings can be read by anyone
+    match /ratings/{ratingId} {
+      allow read: if true;
+      allow create, update: if request.auth.uid != null;
+    }
+
+    // Messages between users and helpers
+    match /messages/{messageId} {
+      allow read: if request.auth.uid == resource.data.from 
+                     || request.auth.uid == resource.data.to;
+      allow create: if request.auth.uid == request.resource.data.from;
+    }
+    
+    */
+  }
+}
